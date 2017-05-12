@@ -14,7 +14,7 @@
 
 def guessing_game
   computer_guess = rand(1..100)
-  print "guess a number"
+  print "guess a number: "
   user_guess = gets.chomp
   print user_guess
   counter = 1
@@ -23,7 +23,7 @@ def guessing_game
   while computer_guess != user_guess
     if computer_guess.to_i > user_guess.to_i
       puts "too low"
-      print "guess a number"
+      print "guess a number: "
       user_guess = gets.chomp
       puts "\n" + user_guess.to_s
       counter += 1
@@ -40,5 +40,17 @@ def guessing_game
       break
     end
   end
-
 end
+
+def shuffle_file
+  print "Type a file name: "
+  input = gets.chomp
+  original_lines = File.readlines("#{input}.txt")
+  File.open("#{input}-shuffled.txt", "w") do |f|
+    original_lines.shuffle.each do |line|
+      f.puts line
+    end
+  end
+end
+
+# guessing_game
